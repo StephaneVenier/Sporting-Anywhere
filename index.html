@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sporting Anywhere – Portail officiel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Police simple, tu pourras la changer ensuite -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --bg-header: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #3b4f3a;      /* vert armée */
+      --accent-soft: #e4ebe3; /* léger fond vert pour badges/sections */
+      --border-soft: #e5e7eb;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.10);
+      --max-w: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background: #2f4030;
+    }
+
+    /* LAYOUT GLOBAL */
+
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    section {
+      margin-top: 2.5rem;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 48rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      margin-top: 1.8rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .btn-primary {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+      background: #2f4030;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid var(--border-soft);
+      background: #f9fafb;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn-ghost:hover {
+      background: #eef1f4;
+      border-color: #d1d5db;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* PROJETS */
+
+    .projects-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .project-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .project-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    .project-footer {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .project-footer a {
+      font-size: 0.82rem;
+    }
+
+    /* FONCTIONNALITÉS */
+
+    .features-grid {
+      margin-top: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem;
+      background: #f9fafb;
+    }
+
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      margin-top: 1.3rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      background: #f9fafb;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-box strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-soft);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .features-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-title">SPORTING ANYWHERE</div>
+      <div class="brand-sub">L’écosystème sport & gamification</div>
+    </div>
+    <nav>
+      <a href="#accueil" class="nav-btn">Accueil</a>
+      <a href="#projets" class="nav-btn">Projets</a>
+      <a href="#aquest" class="nav-btn">A-Quest</a>
+      <a href="#features" class="nav-btn">Fonctionnalités</a>
+      <a href="#contact" class="nav-btn">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="accueil">
+    <div class="hero">
+      <div>
+        <div class="hero-badge">Portail officiel Sporting Anywhere</div>
+        <h1 class="hero-title">Et si ton corps devenait ta manette de jeu&nbsp;?</h1>
+        <p class="hero-subtitle">
+          Sporting Anywhere regroupe toutes tes expériences sportives gamifiées&nbsp;:
+          application A-Quest, défis Hercule-Project, articles A-Cadémie, plateforme A-Fit
+          et collection Anywear. Un seul univers, cinq projets connectés.
+        </p>
+        <div class="hero-cta">
+          <a href="#aquest" class="btn-primary">
+            Découvrir A-Quest
+            <span>↗</span>
+          </a>
+          <a href="#projets" class="btn-ghost">
+            Voir tous les projets
+          </a>
+        </div>
+        <div class="hero-meta">
+          XP, défis, AnyKoins, mobilité active récompensée, coach IA, boutique et plus encore.
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">Tout un univers au même endroit</div>
+        <p class="feature-text">
+          Sporting Anywhere centralise tes outils&nbsp;: application mobile,
+          sites web, défis virtuels et vêtements techniques. Tu choisis ton
+          aventure, nous gamifions ton effort.
+        </p>
+        <div class="hero-chip-row">
+          <span class="chip">XP & AnyKoins</span>
+          <span class="chip">Défis sportifs</span>
+          <span class="chip">Réseau social</span>
+          <span class="chip">Coach IA</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <div class="section-label">Projets</div>
+    <h2 class="section-title">Les univers Sporting Anywhere</h2>
+    <p class="section-desc">
+      Cinq projets, une même philosophie&nbsp;: transformer tes efforts en progression
+      réelle et virtuelle. Du jeu de rôle sportif à la salle de musculation,
+      en passant par les défis mythologiques et les vêtements techniques.
+    </p>
+
+    <div class="projects-grid">
+      <article class="project-card" id="aquest">
+        <div class="project-pill">Application</div>
+        <h3 class="project-title">A-Quest</h3>
+        <p class="project-text">
+          Un RPG sportif où tes pas, tes séances et tes défis font avancer ton avatar
+          dans le monde de Vitalia. Gagne de l’XP, libère des villes et affronte
+          les boss de la Procrastination.
+        </p>
+        <div class="project-footer">
+          <a href="#" class="btn-primary">Accéder à A-Quest</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-pill">Articles & pédagogie</div>
+        <h3 class="project-title">A-Cadémie</h3>
+        <p class="project-text">
+          Une bibliothèque d’articles sur l’entraînement, la santé, la récupération
+          et la performance. Lis, réponds aux quiz et accumule de l’XP en apprenant.
+        </p>
+        <div class="project-footer">
+          <a href="#" class="btn-primary">Visiter A-Cadémie</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-pill">Plateforme pro</div>
+        <h3 class="project-title">A-Fit</h3>
+        <p class="project-text">
+          Une plateforme pensée pour les salles de musculation et de fitness&nbsp;:
+          suivi des membres, programmes, défis internes et intégration avec l’univers
+          Sporting Anywhere.
+        </p>
+        <div class="project-footer">
+          <a href="#" class="btn-primary">Découvrir A-Fit</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-pill">Défis mythologiques</div>
+        <h3 class="project-title">Hercule-Project</h3>
+        <p class="project-text">
+          Les 12 travaux d’Hercule revisités en défis physiques. Niveaux Disciple ou Héros,
+          classement, récompenses et lien direct avec ton compte A-Quest.
+        </p>
+        <div class="project-footer">
+          <a href="#" class="btn-primary">Entrer dans l’Olympe</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-pill">Textile</div>
+        <h3 class="project-title">Anywear</h3>
+        <p class="project-text">
+          La ligne de vêtements sportifs liée à l’univers Sporting Anywhere&nbsp;:
+          t-shirts, sweats et accessoires pensés pour bouger… et pour afficher tes exploits.
+        </p>
+        <div class="project-footer">
+          <a href="#" class="btn-primary">Voir la collection</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-pill">Écosystème</div>
+        <h3 class="project-title">Sporting Anywhere</h3>
+        <p class="project-text">
+          Une seule identité, plusieurs portes d’entrée&nbsp;: compte unique, XP partagée,
+          monnaie virtuelle, défis communs et événements croisés entre tous les projets.
+        </p>
+        <div class="project-footer">
+          <a href="#contact" class="btn-ghost">En savoir plus</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS A-QUEST / APP -->
+  <section id="features">
+    <div class="section-label">Application A-Quest</div>
+    <h2 class="section-title">Une app qui récompense chaque effort</h2>
+    <p class="section-desc">
+      L’application Sporting Anywhere / A-Quest transforme ton activité physique en XP,
+      AnyKoins et progrès visibles, que ce soit en mobilité active, en salle ou en extérieur.:contentReference[oaicite:3]{index=3}
+    </p>
+
+    <div class="features-grid">
+      <article class="feature-card">
+        <h3 class="feature-title">Défis & trophées</h3>
+        <p class="feature-text">
+          Participe à des challenges quotidiens, hebdomadaires et mensuels,
+          gagne des trophées uniques et compare tes résultats avec la communauté.:contentReference[oaicite:4]{index=4}
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3 class="feature-title">XP & AnyKoins</h3>
+        <p class="feature-text">
+          Chaque effort te fait gagner de l’XP et des AnyKoins que tu peux dépenser
+          dans la boutique pour des objets virtuels ou des récompenses réelles.:contentReference[oaicite:5]{index=5}
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3 class="feature-title">Mobilité active récompensée</h3>
+        <p class="feature-text">
+          Marche, vélo, trottinette&nbsp;: transforme tes trajets du quotidien
+          en progression dans le jeu et en bonus dans ton écosystème sportif.:contentReference[oaicite:6]{index=6}
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3 class="feature-title">Coach IA & suivi</h3>
+        <p class="feature-text">
+          Un coach intelligent qui adapte les séances, suit ta charge, t’envoie
+          des rappels personnalisés et t’aide à éviter la blessure tout en progressant.:contentReference[oaicite:7]{index=7}
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Envie de rejoindre l’aventure&nbsp;?</h2>
+    <p class="section-desc">
+      Tu souhaites tester un projet, collaborer, ou mettre en place Sporting Anywhere
+      dans ta structure&nbsp;? Laisse-nous un message.
+    </p>
+
+    <div class="contact-box">
+      <div>
+        <strong>Sporting Anywhere</strong>
+        <span>Questions, partenariats, salles de sport, écoles, collectivités…</span>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <!-- Remplace par ton vrai mail ou un lien vers un formulaire -->
+        <a href="mailto:contact@sportinganywhere.com" class="btn-primary">
+          Écrire un email
+        </a>
+        <a href="#accueil" class="btn-ghost">
+          Retour en haut
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © Sporting Anywhere – Univers & défis sportifs • 2025
+  </footer>
+
+</main>
+
+</body>
+</html>
